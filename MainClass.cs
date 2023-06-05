@@ -96,7 +96,7 @@ namespace Kurs
             }
             else
             {
-                client = new TcpClient("192.168.50.11", 7000);
+                client = new TcpClient("192.168.112.94", 7000);
             }
             NetworkStream stream = client.GetStream();
             RenderWindow window = new RenderWindow(new VideoMode(1700, 894), "Moi megaman");
