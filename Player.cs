@@ -56,7 +56,7 @@ namespace Kurs
             }
             else
             {
-                a =(float)(a+ 0.0005);
+                a =(float)(a+ 0.0025);
                 onGround = false;
             }
             if (x < 60)

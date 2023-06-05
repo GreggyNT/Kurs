@@ -214,7 +214,7 @@ namespace Kurs
                         ff.destr = false;
                         if (p.sprite.Scale.X == 1)
                         {
-                            ff._speed = 1F;
+                            ff._speed = 5F;
                             ff._x = p.x + p.w;
                             ff._y = p.y + p.h / 2;
 
@@ -222,7 +222,7 @@ namespace Kurs
 
                         else
                         {
-                            ff._speed = -1F;
+                            ff._speed = -5F;
                             ff._x = p.x - p.w - 30;
                             ff._y = p.y + p.h / 2;
                         }
@@ -244,7 +244,7 @@ namespace Kurs
                 {
                     bools_tosen[2] = true;
                     CurrentFrame +=(float) 0.005 * time;
-                    p.speed = -0.2F;
+                    p.speed = 1F;
                     if (CurrentFrame > 3) CurrentFrame -= 3;
                     p.sprite.TextureRect = new IntRect(72 * (int)CurrentFrame, 78, 72,(int) p.h);
                     p.sprite.Scale = new Vector2f(-1, 1);
@@ -254,7 +254,7 @@ namespace Kurs
                     if ((Keyboard.IsKeyPressed(Keyboard.Key.Right)))
                 {
                     bools_tosen[3] = true;
-                    p.speed = 0.2F;
+                    p.speed = 1F;
                     CurrentFrame +=(float) 0.005 * time;
                     if (CurrentFrame > 3) CurrentFrame -= 3;
                     p.sprite.TextureRect = new IntRect(72 * (int)(CurrentFrame), 78, 72,(int) p.h);
@@ -326,7 +326,7 @@ namespace Kurs
                 if (receive[3])
                 {
                     CurrentFrame1 +=(float) 0.005 * time;
-                    p1.speed = -0.2F;
+                    p1.speed = -1F;
                     if (CurrentFrame1 > 3) CurrentFrame1 -= 3;
                     p1.sprite.TextureRect = new IntRect(72 * (int)(CurrentFrame1), 78, 72, (int)p1.h);
                     p1.sprite.Scale = new Vector2f(-1, 1);
@@ -335,7 +335,7 @@ namespace Kurs
                 else
                     if (receive[2])
                 {
-                    p1.speed = 0.2F;
+                    p1.speed = 1F;
                     CurrentFrame1 += (float)0.005 * time;
                     if (CurrentFrame1 > 3) CurrentFrame1 -= 3;
                     p1.sprite.TextureRect = new IntRect(72 * (int)(CurrentFrame1), 78, 72,(int) p1.h);
@@ -501,13 +501,19 @@ namespace Kurs
             return result;
         }
 
-        public static bool[] ConvertByteToBoolArray(byte bytes)
+        private static bool[] ConvertByteToBoolArray(byte b)
         {
-            System.Collections.BitArray b = new System.Collections.BitArray(bytes);
-            bool[] bitValues = new bool[b.Count];
-            b.CopyTo(bitValues, 0);
-            Array.Reverse(bitValues);
-            return bitValues;
+            // prepare the return result
+            bool[] result = new bool[4];
+
+            // check each bit in the byte. if 1 set to true, if 0 set to false
+            for (int i = 0; i < 4; i++)
+                result[i] = (b & (1 << i)) != 0;
+
+            // reverse the array
+            Array.Reverse(result);
+
+            return result;
         }
 
     }
