@@ -121,7 +121,7 @@ namespace Kurs
             SFML.Graphics.Text text = new SFML.Graphics.Text("", font, 40);
             String str;
             text.Style = SFML.Graphics.Text.Styles.Bold;
-            text.Position = new Vector2f(800, 800);
+            text.Position = new Vector2f(850, 800);
 
             Player p = new Player("spritifulhd.png", 50, 700, 53, 78);
             Player p1 = new Player("spritifulhd1.png", 1620, 700, 53, 78);
