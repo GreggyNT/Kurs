@@ -18,8 +18,8 @@ namespace Kurs
         public static bool fl = false;
         public static bool shot_spee1 = false;
         public static bool shot_spee2 = false;
-        public static bool[] bools_tosen = new bool[4];
-        public static bool[] receive = new bool[4];
+        public static bool[] bools_tosen;
+        public static bool[] receive;
         public static int score1 = 0;
         public static int score2 = 0;
         static List<Bullet> bullets;
@@ -112,6 +112,8 @@ namespace Kurs
             timer1.Start();
             timer1.Elapsed += OnTimedEvent1;
         beg:
+            bools_tosen = new bool[5];
+            receive = new bool[5];
             bullets = new List<Bullet>();
             SoundBuffer shootBuffer = new SoundBuffer("shoot.ogg");
             Sound shoot = new Sound(shootBuffer);
@@ -435,8 +437,9 @@ namespace Kurs
                     while (!((Keyboard.IsKeyPressed(Keyboard.Key.R)) || (Keyboard.IsKeyPressed(Keyboard.Key.Escape)) || Keyboard.IsKeyPressed(Keyboard.Key.Space)))
                     {
                     }
-                    if (Keyboard.IsKeyPressed(Keyboard.Key.R) || Keyboard.IsKeyPressed(Keyboard.Key.Space) || Keyboard.IsKeyPressed(Keyboard.Key.Space))
+                    if (Keyboard.IsKeyPressed(Keyboard.Key.R) || Keyboard.IsKeyPressed(Keyboard.Key.Space) || Keyboard.IsKeyPressed(Keyboard.Key.Space) || receive[4])
                     {
+                        bools_tosen[4] = true; 
                         p.isShooting = true;
                         p1.isShooting = true;
                         goto beg;
