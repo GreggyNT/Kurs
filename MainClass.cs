@@ -184,10 +184,10 @@ namespace Kurs
             }
             float backtimer = 0;
             CurrentFrame = 0;
+            p.sprite.Position = new Vector2f(0, 700);
             stream.WriteByte(ConvertBoolArrayToByte(bools_tosen));
             while (window.IsOpen)
             {
-                
                 receive = ConvertByteToBoolArray((byte)stream.ReadByte());
                 bools_tosen = new bool[5]; 
                 if (Keyboard.IsKeyPressed(Keyboard.Key.R))
@@ -438,8 +438,10 @@ namespace Kurs
                     image.Position = new Vector2f(650, 200);
                     window.Draw(image);
                     window.Display();
-                    while (!((Keyboard.IsKeyPressed(Keyboard.Key.R)) || (Keyboard.IsKeyPressed(Keyboard.Key.Escape)) || Keyboard.IsKeyPressed(Keyboard.Key.Space)))
+                    while (!((Keyboard.IsKeyPressed(Keyboard.Key.R)) || (Keyboard.IsKeyPressed(Keyboard.Key.Escape)) || Keyboard.IsKeyPressed(Keyboard.Key.Space)|| receive[4])))
                     {
+                        stream.WriteByte(ConvertBoolArrayToByte(bools_tosen));
+                        receive = ConvertByteToBoolArray((byte)stream.ReadByte());
                     }
                     if (Keyboard.IsKeyPressed(Keyboard.Key.R) || Keyboard.IsKeyPressed(Keyboard.Key.Space) || Keyboard.IsKeyPressed(Keyboard.Key.Space) || receive[4])
                     {
