@@ -186,8 +186,8 @@ namespace Kurs
             CurrentFrame = 0;
             while (window.IsOpen)
             {
-                stream.WriteByte(ConvertBoolArrayToByte(bools_tosen));
-                receive= ConvertByteToBoolArray((byte)stream.ReadByte());
+                bools_tosen = new bool[5];
+                receive = new bool[5];
                 if (Keyboard.IsKeyPressed(Keyboard.Key.R))
                     if (Dns.GetHostEntry(Dns.GetHostName())
                 .AddressList
@@ -237,7 +237,7 @@ namespace Kurs
                     bools_tosen[1] = true;
                     if (p.onGround)
                     {
-                        p.a = -0.5F;
+                        p.a = -2F;
                         p.onGround = false;
                     }
                     heroyawntimer1 = 0;
@@ -320,7 +320,7 @@ namespace Kurs
                 {
                     if (p1.onGround)
                     {
-                        p1.a = -0.5F;
+                        p1.a = -2F;
                         p1.onGround = false;
                     }
                     heroyawntimer2 = 0;
@@ -409,11 +409,12 @@ namespace Kurs
                     while (!((Keyboard.IsKeyPressed(Keyboard.Key.R)) || (Keyboard.IsKeyPressed(Keyboard.Key.Escape)) || Keyboard.IsKeyPressed(Keyboard.Key.Space)))
                     {
                     }
-                    if (Keyboard.IsKeyPressed(Keyboard.Key.R) || Keyboard.IsKeyPressed(Keyboard.Key.Space))
+                    if (Keyboard.IsKeyPressed(Keyboard.Key.R) || Keyboard.IsKeyPressed(Keyboard.Key.Space) || receive[4])
                     {
 
                         ff._speed = 0;
                         ff1._speed = 0;
+                        bools_tosen[4] = true;
                         goto beg;
                     }
                     else
@@ -474,6 +475,8 @@ namespace Kurs
                 window.Draw(p.hp.sprite);
                 window.Draw(p1.hp.sprite);
                 window.Display();
+                stream.WriteByte(ConvertBoolArrayToByte(bools_tosen));
+                receive = ConvertByteToBoolArray((byte)stream.ReadByte());
             }
         }
 
@@ -507,10 +510,10 @@ namespace Kurs
         private static bool[] ConvertByteToBoolArray(byte b)
         {
             // prepare the return result
-            bool[] result = new bool[4];
+            bool[] result = new bool[5];
 
             // check each bit in the byte. if 1 set to true, if 0 set to false
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 5; i++)
                 result[i] = (b & (1 << i)) != 0;
 
             // reverse the array
