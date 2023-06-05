@@ -99,7 +99,7 @@ namespace Kurs
                 client = new TcpClient("192.168.50.11", 7000);
             }
             NetworkStream stream = client.GetStream();
-            RenderWindow window = new RenderWindow(new VideoMode(1736, 894), "Moi megaman");
+            RenderWindow window = new RenderWindow(new VideoMode(1700, 894), "Moi megaman");
             window.Closed += (sender, args) => window.Close();
             if (fl == true)
                 window.Close();
@@ -125,7 +125,7 @@ namespace Kurs
 
             Player p = new Player("spritifulhd.png", 50, 700, 53, 78);
             Player p1 = new Player("spritifulhd1.png", 1670, 700, 53, 78);
-            p1.sprite.Position = new Vector2f(1670, 700);
+            p1.sprite.Position = new Vector2f(1620, 700);
             p1.hp.sprite.Position = new Vector2f(1650, 800);
             p.sprite.Position = new Vector2f(50, 700);
             p.hp.sprite.Position = new Vector2f(50, 800);
@@ -417,6 +417,7 @@ namespace Kurs
                         ff._speed = 0;
                         ff1._speed = 0;
                         bools_tosen[4] = true;
+                        stream.WriteByte(ConvertBoolArrayToByte(bools_tosen));
                         goto beg;
                     }
                     else
