@@ -186,8 +186,9 @@ namespace Kurs
             CurrentFrame = 0;
             while (window.IsOpen)
             {
-                bools_tosen = new bool[5];
                 receive = new bool[5];
+                receive = ConvertByteToBoolArray((byte)stream.ReadByte());
+                bools_tosen = new bool[5]; 
                 if (Keyboard.IsKeyPressed(Keyboard.Key.R))
                     if (Dns.GetHostEntry(Dns.GetHostName())
                 .AddressList
@@ -476,7 +477,7 @@ namespace Kurs
                 window.Draw(p1.hp.sprite);
                 window.Display();
                 stream.WriteByte(ConvertBoolArrayToByte(bools_tosen));
-                receive = ConvertByteToBoolArray((byte)stream.ReadByte());
+
             }
         }
 
