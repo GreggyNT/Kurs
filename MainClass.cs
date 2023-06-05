@@ -184,10 +184,10 @@ namespace Kurs
             }
             float backtimer = 0;
             CurrentFrame = 0;
+            stream.WriteByte(ConvertBoolArrayToByte(bools_tosen));
             while (window.IsOpen)
             {
-                stream.WriteByte(ConvertBoolArrayToByte(bools_tosen));
-                bools_tosen = new bool[5];
+                
                 receive = ConvertByteToBoolArray((byte)stream.ReadByte());
                 bools_tosen = new bool[5]; 
                 if (Keyboard.IsKeyPressed(Keyboard.Key.R))
@@ -477,7 +477,8 @@ namespace Kurs
                 window.Draw(p.hp.sprite);
                 window.Draw(p1.hp.sprite);
                 window.Display();
-               
+                stream.WriteByte(ConvertBoolArrayToByte(bools_tosen));
+                bools_tosen = new bool[5];
             }
         }
 
