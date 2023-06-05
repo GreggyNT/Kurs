@@ -190,10 +190,6 @@ namespace Kurs
                 receive = ConvertByteToBoolArray((byte)stream.ReadByte());
                 bools_tosen = new bool[5]; 
                 if (Keyboard.IsKeyPressed(Keyboard.Key.R))
-                    if (Dns.GetHostEntry(Dns.GetHostName())
-                .AddressList
-                .First(address => address.AddressFamily == AddressFamily.InterNetwork)
-                .ToString() == "192.168.189.1")
                         goto beg;
                 if ((Keyboard.IsKeyPressed(Keyboard.Key.Escape)))
                     window.Close();
