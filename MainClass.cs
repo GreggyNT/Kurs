@@ -96,7 +96,7 @@ namespace Kurs
             }
             else
             {
-                client = new TcpClient("192.168.189.1", 7000);
+                client = new TcpClient("192.168.50.11", 7000);
             }
             NetworkStream stream = client.GetStream();
             RenderWindow window = new RenderWindow(new VideoMode(1736, 894), "Moi megaman");
@@ -244,7 +244,7 @@ namespace Kurs
                 {
                     bools_tosen[2] = true;
                     CurrentFrame +=(float) 0.005 * time;
-                    p.speed = 1F;
+                    p.speed = -1F;
                     if (CurrentFrame > 3) CurrentFrame -= 3;
                     p.sprite.TextureRect = new IntRect(72 * (int)CurrentFrame, 78, 72,(int) p.h);
                     p.sprite.Scale = new Vector2f(-1, 1);
@@ -299,13 +299,13 @@ namespace Kurs
                         ff1.destr = false;
                         if (p1.sprite.Scale.X == 1)
                         {
-                            ff1._speed = 1F;
+                            ff1._speed = 5F;
                             ff1._x = p1.x + p1.w;
                             ff1._y = p1.y + p1.h / 2;
                         }
                         else
                         {
-                            ff1._speed = -1F;
+                            ff1._speed = -5F;
                             ff1._x = p1.x - p1.w - 30;
                             ff1._y = p1.y + p1.h / 2;
                         }
