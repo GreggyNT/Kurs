@@ -442,10 +442,10 @@ namespace Kurs
                     window.Display();
                     while (!((Keyboard.IsKeyPressed(Keyboard.Key.R)) || (Keyboard.IsKeyPressed(Keyboard.Key.Escape)) || Keyboard.IsKeyPressed(Keyboard.Key.Space) || receive[4]))
                     {
+                        stream.WriteByte(ConvertBoolArrayToByte(bools_tosen));
+                        receive = ConvertByteToBoolArray((byte)stream.ReadByte());
                     }
                     bools_tosen[4] = true;
-                    stream.WriteByte(ConvertBoolArrayToByte(bools_tosen));
-                    receive = ConvertByteToBoolArray((byte)stream.ReadByte());
                     if (Keyboard.IsKeyPressed(Keyboard.Key.R) || Keyboard.IsKeyPressed(Keyboard.Key.Space) || Keyboard.IsKeyPressed(Keyboard.Key.Space) || receive[4])
                     {
                         bools_tosen[4] = true; 
