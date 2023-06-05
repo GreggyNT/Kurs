@@ -42,8 +42,8 @@ namespace Kurs
         public void update(PlatBox pl1, PlatBox pl2, PlatBox pl3, PlatBox pl4)
         {
             x += speed * 1;
-            y =y+ (float)(a * 0.8);
-            if ((int)y == 700)
+            y =y+ (float)(a * 1.2);
+            if ((int)y <= 700&&(int)y >=690 )
             {
                 a = 0;
                 onGround = true;
@@ -59,10 +59,10 @@ namespace Kurs
                 a =(float)(a+ 0.01);
                 onGround = false;
             }
-            if (x < 60)
-                x = 60;
-            if (x > 1676)
-                x = 1676;
+            if (x < 0)
+                x = 0;
+            if (x > 1700)
+                x = 1700;
             sprite.Position = new SFML.System.Vector2f(x, y);
         }
     }
