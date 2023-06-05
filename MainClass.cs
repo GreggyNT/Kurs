@@ -124,10 +124,10 @@ namespace Kurs
             text.Position = new Vector2f(800, 800);
 
             Player p = new Player("spritifulhd.png", 50, 700, 53, 78);
-            Player p1 = new Player("spritifulhd1.png", 1670, 700, 53, 78);
+            Player p1 = new Player("spritifulhd1.png", 1620, 700, 53, 78);
             p1.sprite.Position = new Vector2f(1620, 700);
             p1.hp.sprite.Position = new Vector2f(1650, 800);
-            p.sprite.Position = new Vector2f(50, 700);
+            p.sprite.Position = new Vector2f(20, 700);
             p.hp.sprite.Position = new Vector2f(50, 800);
             Bullet ff = new Bullet();
             Sprite SpriteBull = new Sprite(new Texture("images/spritifulhd.png"));
